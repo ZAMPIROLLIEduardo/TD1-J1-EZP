@@ -35,12 +35,11 @@ def compter(text, debug=False):
     for c in text:
         char += 1
 
-        # Substituído os 'if' pelo 'match/case' obrigatório do exercício
         match c:
             case "\n":
                 lig += 1
                 nouvelle_mot = True
-            case " " | "\t":  # Adicionado o '\t' solicitado
+            case " " | "\t":
                 nouvelle_mot = True
             case _:
                 if nouvelle_mot:
