@@ -34,17 +34,21 @@ def compter(text, debug=False):
     nouvelle_mot = True
     for c in text:
         char += 1
-        if char == "\n":
-            lig += 1
-            nouvelle_mot = True
-        if char == " ":
-            nouvelle_mot = True
-        else:
-            if nouvelle_mot:
-                nouvelle_mot = False
-                mots += 1
-                if debug:
-                    print(f"[DEBUG] mot n°{mots}", file=sys.stderr)
+
+        # Substituído os 'if' pelo 'match/case' obrigatório do exercício
+        match c:
+            case "\n":
+                lig += 1
+                nouvelle_mot = True
+            case " " | "\t":  # Adicionado o '\t' solicitado
+                nouvelle_mot = True
+            case _:
+                if nouvelle_mot:
+                    nouvelle_mot = False
+                    mots += 1
+                    if debug:
+                        print(f"[DEBUG] mot n°{mots}", file=sys.stderr)
+
     return (char, lig, mots)
 
 
